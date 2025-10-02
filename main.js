@@ -53,7 +53,10 @@ function removeProduct(name, quantity) {
   }
   
   // If the quantity after the subtraction is zero, removeProduct should remove the product object from the inventory.
-  if (inventory[index].quantity - quantity === 0) {
+  if (inventory[index].quantity - quantity === 0 && inventory.length === 1) {
+    inventory = [];
+    return inventory;
+  } else if (inventory[index].quantity - quantity === 0) {
     inventory = inventory.splice(inventory[index], 1);
     return inventory;
   }
